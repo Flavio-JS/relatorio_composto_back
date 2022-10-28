@@ -11,6 +11,7 @@ server.use(cors());
 server.use(express.urlencoded({ extended: true }));
 server.use(express.json());
 
+server.use("/", require("./router/admRouter"));
 server.use("/", require("./router/associadosRouter"));
 
 server.listen(port, () => {
