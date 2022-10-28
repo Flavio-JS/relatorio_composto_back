@@ -49,3 +49,6 @@ REFERENCES public.associados (associado_id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
+
+INSERT INTO adm (adm_cpf, adm_name, adm_data_cadastro, adm_senha) VALUES ('00000000000', 'adm', NOW(), '$2a$08$kfvdrEJplpskDD3COKLML.afqeWLXyXgryK9df1RlZrkfxIoWPdQK');
+-- senha: adm
