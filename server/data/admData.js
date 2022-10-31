@@ -16,3 +16,15 @@ exports.addAdm = function (admCpf, admName, hashPassword) {
     VALUES('${admCpf}', '${admName}', '${hashPassword}', NOW());`
   );
 };
+
+exports.putAdmName = function (admCpf, admName) {
+  return db.query(
+    `UPDATE adm SET adm_name = '${admName}', adm_data_modificacao = NOW() WHERE adm_cpf = '${admCpf}'`
+  );
+};
+
+exports.putAdmSenha = function (admCpf, admSenha) {
+  return db.query(
+    `UPDATE adm SET adm_senha = '${admSenha}', adm_data_modificacao = NOW() WHERE adm_cpf = '${admCpf}'`
+  );
+};

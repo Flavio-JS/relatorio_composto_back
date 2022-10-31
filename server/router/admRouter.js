@@ -52,4 +52,22 @@ router.post("/addAdm", async function (req, res) {
   }
 });
 
+router.put("/modifyAdm", async function (req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+
+  let admCpf = req.body.admCpf;
+  let admName = req.body.admName;
+  let hashPassword;
+  if (req.body.admSenha !== undefined && req.body.admSenha !== "") {
+    hashPassword = await bcrypt.hash(req.body.admSenha, 8);
+  }
+
+  try {
+    await admService.putAdm(admCpf, admName, hashPassword);
+    res.send(`Adm de CPF = ${admCpf}, modificado com sucesso !`);
+  } catch (error) {
+    res.send(error);
+  }
+});
+
 module.exports = router;

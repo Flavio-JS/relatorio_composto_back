@@ -32,3 +32,17 @@ exports.hashPassword = async function (loginCpf) {
 exports.addAdm = async function (admCpf, admName, hashPassword) {
   return await admData.addAdm(admCpf, admName, hashPassword);
 };
+
+exports.putAdm = async function (admCpf, admName, hashPassword) {
+  try {
+    if (admName !== undefined && admName !== "") {
+      await admData.putAdmName(admCpf, admName);
+    }
+    if (hashPassword !== undefined && hashPassword !== "") {
+      await admData.putAdmSenha(admCpf, hashPassword);
+    }
+    return "sucesso";
+  } catch (error) {
+    return error;
+  }
+};
