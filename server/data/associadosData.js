@@ -13,3 +13,27 @@ exports.postAssociado = function (name, email, phone) {
     `);
   }
 };
+
+exports.putAssociadoName = function (id, name) {
+  return db.query(
+    `UPDATE associados SET associado_name = '${name}', associado_data_modificacao = NOW() WHERE associado_id = ${id}`
+  );
+};
+
+exports.putAssociadoEmail = function (id, email) {
+  return db.query(
+    `UPDATE associados SET associado_email = '${email}', associado_data_modificacao = NOW() WHERE associado_id = ${id}`
+  );
+};
+
+exports.putAssociadoPhone = function (id, phone) {
+  return db.query(
+    `UPDATE associados SET associado_phone = '${phone}', associado_data_modificacao = NOW() WHERE associado_id = ${id}`
+  );
+};
+
+exports.putAssociadoStatus = function (id, status) {
+  return db.query(
+    `UPDATE associados SET associado_status = '${status}', associado_data_modificacao = NOW() WHERE associado_id = ${id}`
+  );
+};

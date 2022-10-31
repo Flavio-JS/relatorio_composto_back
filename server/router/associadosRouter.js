@@ -13,4 +13,23 @@ router.post("/associado", async function (req, res) {
   res.send(newAssociado);
 });
 
+router.put("/modifyAssociado", async function (req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+
+  let id = req.body.id;
+  let name = req.body.name;
+  let email = req.body.email;
+  let phone = req.body.phone;
+  let status = req.body.status;
+
+  let resultado = await associadosService.putAssociado(
+    id,
+    name,
+    email,
+    phone,
+    status
+  );
+  res.send(resultado);
+});
+
 module.exports = router;
