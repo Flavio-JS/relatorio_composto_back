@@ -13,6 +13,7 @@ server.use(express.json());
 
 server.use("/", require("./router/admRouter"));
 server.use("/", require("./router/associadosRouter"));
+server.use("/", require("./router/coletasRouter"));
 
 server.listen(port, () => {
   console.log(`servidor escutando na porta ${port}`);

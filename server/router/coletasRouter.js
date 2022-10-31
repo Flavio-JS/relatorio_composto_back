@@ -9,16 +9,16 @@ router.get("/coletas", async function (req, res) {
   res.json(coletas);
 });
 
-// router.post("/associado", async function (req, res) {
-//   res.setHeader("Access-Control-Allow-Origin", "*");
+router.post("/addColeta", async function (req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
 
-//   let name = req.body.name;
-//   let email = req.body.email;
-//   let phone = req.body.phone;
+  let idAssociado = req.body.idAssociado;
+  let data = req.body.data;
+  let coletaKg = req.body.coletaKg;
 
-//   let newAssociado = await coletasService.postAssociado(name, email, phone);
-//   res.send(newAssociado);
-// });
+  let newColeta = await coletasService.postColeta(idAssociado, data, coletaKg);
+  res.send(newColeta);
+});
 
 // router.put("/modifyAssociado", async function (req, res) {
 //   res.setHeader("Access-Control-Allow-Origin", "*");

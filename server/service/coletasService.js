@@ -1,22 +1,22 @@
 const coletasData = require("../data/coletasData");
 
-exports.getColetas = function () {
+exports.getColetas = async function () {
   try {
-    let coletas = coletasData.getColetas();
+    let coletas = await coletasData.getColetas();
     return coletas;
   } catch (error) {
     return error;
   }
 };
 
-// exports.postAssociado = function (name, email, phone) {
-//   try {
-//     associadosData.postAssociado(name, email, phone);
-//     return "cadastro realizado com sucesso";
-//   } catch (error) {
-//     return error;
-//   }
-// };
+exports.postColeta = async function (idAssociado, data, coletaKg) {
+  try {
+    await coletasData.postColeta(idAssociado, data, coletaKg);
+    return "cadastro realizado com sucesso";
+  } catch (error) {
+    return error;
+  }
+};
 
 // exports.putAssociado = function (id, name, email, phone, status) {
 //   try {
