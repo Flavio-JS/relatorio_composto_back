@@ -44,12 +44,8 @@ router.post("/addAdm", async function (req, res) {
   let admName = await req.body.admName;
   let hashPassword = await bcrypt.hash(req.body.admSenha, 8);
 
-  try {
-    await admService.addAdm(admCpf, admName, hashPassword);
-    res.send("Adm cadastrado com sucesso !");
-  } catch (error) {
-    res.send(error);
-  }
+  let resultado = await admService.addAdm(admCpf, admName, hashPassword);
+  res.send(resultado);
 });
 
 router.put("/modifyAdm", async function (req, res) {
@@ -62,12 +58,8 @@ router.put("/modifyAdm", async function (req, res) {
     hashPassword = await bcrypt.hash(req.body.admSenha, 8);
   }
 
-  try {
-    await admService.putAdm(admCpf, admName, hashPassword);
-    res.send(`Adm de CPF = ${admCpf}, modificado com sucesso !`);
-  } catch (error) {
-    res.send(error);
-  }
+  let resultado = await admService.putAdm(admCpf, admName, hashPassword);
+  res.send(resultado);
 });
 
 module.exports = router;

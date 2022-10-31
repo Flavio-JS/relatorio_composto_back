@@ -30,7 +30,12 @@ exports.hashPassword = async function (loginCpf) {
 };
 
 exports.addAdm = async function (admCpf, admName, hashPassword) {
-  return await admData.addAdm(admCpf, admName, hashPassword);
+  try {
+    await admData.addAdm(admCpf, admName, hashPassword);
+    return "Adm cadastrado com sucesso !";
+  } catch (error) {
+    return error;
+  }
 };
 
 exports.putAdm = async function (admCpf, admName, hashPassword) {
@@ -41,7 +46,7 @@ exports.putAdm = async function (admCpf, admName, hashPassword) {
     if (hashPassword !== undefined && hashPassword !== "") {
       await admData.putAdmSenha(admCpf, hashPassword);
     }
-    return "sucesso";
+    return `Adm de CPF = ${admCpf}, modificado com sucesso !`;
   } catch (error) {
     return error;
   }
