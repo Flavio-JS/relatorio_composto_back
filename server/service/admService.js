@@ -28,3 +28,7 @@ exports.postLogin = async function (loginCpf) {
 exports.hashPassword = async function (loginCpf) {
   return await admData.hashPassword(loginCpf);
 };
+
+exports.addAdm = async function (admCpf, admName, hashPassword) {
+  return await admData.addAdm(admCpf, admName, hashPassword);
+};

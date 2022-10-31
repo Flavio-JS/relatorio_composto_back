@@ -37,4 +37,19 @@ router.post("/admLogin", async function (req, res) {
   }
 });
 
+router.post("/addAdm", async function (req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+
+  let admCpf = await req.body.admCpf;
+  let admName = await req.body.admName;
+  let hashPassword = await bcrypt.hash(req.body.admSenha, 8);
+
+  try {
+    await admService.addAdm(admCpf, admName, hashPassword);
+    res.send("Adm cadastrado com sucesso !");
+  } catch (error) {
+    res.send(error);
+  }
+});
+
 module.exports = router;
