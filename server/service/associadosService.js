@@ -1,5 +1,14 @@
 const associadosData = require("../data/associadosData");
 
+exports.getAssociados = function () {
+  try {
+    let associados = associadosData.getAssociados();
+    return associados;
+  } catch (error) {
+    return error;
+  }
+};
+
 exports.postAssociado = function (name, email, phone) {
   try {
     associadosData.postAssociado(name, email, phone);
